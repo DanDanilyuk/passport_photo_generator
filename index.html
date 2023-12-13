@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Processor</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="imageprocessor.js"></script>
+</head>
+<body>
+  <h1>Image Processor</h1>
+
+  <div id="sizeSelection">
+    <h2>Select Image Size:</h2>
+    <select id="imageSize">
+      <option value="4x6" selected>4x6</option>
+      <option value="5x7">5x7</option>
+    </select>
+  </div>
+
+  <input type="file" id="imageInput">
+  <button id="downloadButton">Download Image</button>
+
+  <div id="instructions">
+    <h2>Instructions:</h2>
+    <ol>
+      <li>Crop image with <a href="https://tsg.phototool.state.gov/photo">US Passport Crop Tool</a></li>
+      <li>Select an image using the "Choose File" button.</li>
+      <li>Select the desired image size from the dropdown.</li>
+      <li>Click the "Download Image" button to download the processed image.</li>
+    </ol>
+  </div>
+
+  <div id="preview">
+    <h2>Preview:</h2>
+    <canvas id="previewCanvas"></canvas>
+  </div>
+</body>
+</html>
