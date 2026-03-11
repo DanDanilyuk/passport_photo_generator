@@ -3,37 +3,73 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Image Processor</title>
+  <title>Passport Photo Printer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
-  <script src="imageprocessor.js"></script>
+  <script src="imageProcessor.js"></script>
 </head>
 <body>
-  <h1>Image Processor</h1>
+  <div class="container">
+    <header class="header">
+      <h1>Passport Photo Printer</h1>
+      <p class="subtitle">Print-ready passport photos in seconds.</p>
+    </header>
 
-  <div id="sizeSelection">
-    <h2>Select Image Size:</h2>
-    <select id="imageSize">
-      <option value="4x6" selected>4x6</option>
-      <option value="5x7">5x7</option>
-    </select>
-  </div>
+    <main class="card">
+      <div class="card-section">
+        <label class="field-label" for="imageSize">Print Size</label>
+        <div class="select-wrapper">
+          <select id="imageSize">
+            <option value="4x6" selected>4 &times; 6&Prime;</option>
+            <option value="5x7">5 &times; 7&Prime;</option>
+          </select>
+          <svg class="select-arrow" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+            <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd"/>
+          </svg>
+        </div>
+      </div>
 
-  <input type="file" id="imageInput">
-  <button id="downloadButton">Download Image</button>
+      <div class="card-section">
+        <label class="field-label">Photo</label>
+        <label class="file-input-label" tabindex="0" role="button">
+          <svg class="upload-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+            <polyline points="17 8 12 3 7 8"/>
+            <line x1="12" y1="3" x2="12" y2="15"/>
+          </svg>
+          <span class="file-input-text">Choose a photo</span>
+          <input type="file" id="imageInput" accept="image/*">
+        </label>
+      </div>
 
-  <div id="instructions">
-    <h2>Instructions:</h2>
-    <ol>
-      <li>Crop image with <a href="https://tsg.phototool.state.gov/photo">US Passport Crop Tool</a></li>
-      <li>Select an image using the "Choose File" button.</li>
-      <li>Select the desired image size from the dropdown.</li>
-      <li>Click the "Download Image" button to download the processed image.</li>
-    </ol>
-  </div>
+      <button id="downloadButton">
+        <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+          <polyline points="7 10 12 15 17 10"/>
+          <line x1="12" y1="15" x2="12" y2="3"/>
+        </svg>
+        Download Print File
+      </button>
+    </main>
 
-  <div id="preview">
-    <h2>Preview:</h2>
-    <canvas id="previewCanvas"></canvas>
+    <section class="card" id="instructions">
+      <h2>How It Works</h2>
+      <ol>
+        <li>Crop your photo using the <a href="https://tsg.phototool.state.gov/photo" target="_blank" rel="noopener">State Department's free crop tool</a>.</li>
+        <li>Upload your cropped photo above.</li>
+        <li>Pick your print size (4x6" or 5x7").</li>
+        <li>Hit "Download Print File" to save your ready-to-print sheet.</li>
+      </ol>
+    </section>
+
+    <section class="card preview-card" id="preview" style="display: none;">
+      <h2>Preview</h2>
+      <div class="canvas-wrapper">
+        <canvas id="previewCanvas"></canvas>
+      </div>
+    </section>
   </div>
 </body>
 </html>

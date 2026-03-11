@@ -6,6 +6,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function handleImageChange(e) {
   if (e.target.files && e.target.files[0]) {
+    const fileText = document.querySelector('.file-input-text');
+    if (fileText) fileText.textContent = e.target.files[0].name;
     const reader = new FileReader();
     reader.onload = function(event) {
       const img = new Image();
@@ -22,7 +24,8 @@ function handleDownload() {
   const canvas = document.getElementById('previewCanvas');
   const image = canvas.toDataURL('image/jpg').replace('image/jpg', 'image/octet-stream');
   const link = document.createElement('a');
-  link.download = 'PASSPORT_IMAGE_4X6.JPG';
+  const size = document.getElementById('imageSize').value;
+  link.download = `passport_print_${size}.jpg`;
   link.href = image;
   link.click();
 }
@@ -56,7 +59,11 @@ function processImage(img) {
 
   canvas.height = outputHeight;
   canvas.width = outputWidth;
-  canvas.style.width = '25%';
+
+  document.getElementById('preview').style.display = '';
+
+  ctx.fillStyle = '#FFFFFF';
+  ctx.fillRect(0, 0, outputWidth, outputHeight);
 
   for (let row = 0; row < numRows; row++) {
     for (let col = 0; col < numCols; col++) {
